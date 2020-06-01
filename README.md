@@ -66,3 +66,32 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### 依赖摘要
+```
+Direct dependencies
+├─ react-redux@7.2.0
+├─ react-router-dom@5.2.0
+├─ redux-saga@1.1.3
+└─ redux@4.0.5
+info All dependencies
+├─ @redux-saga/core@1.1.3
+├─ @redux-saga/deferred@1.1.2
+├─ @redux-saga/delay-p@1.1.2
+├─ @redux-saga/is@1.1.2
+├─ hoist-non-react-statics@3.3.2
+├─ mini-create-react-context@0.4.0
+├─ path-to-regexp@1.8.0
+├─ react-redux@7.2.0
+├─ react-router-dom@5.2.0
+├─ react-router@5.2.0
+├─ redux-saga@1.1.3
+├─ redux@4.0.5
+├─ resolve-pathname@3.0.0
+├─ symbol-observable@1.2.0
+├─ tiny-warning@1.0.3
+├─ typescript-compare@0.0.2
+├─ typescript-logic@0.0.0
+├─ typescript-tuple@2.2.1
+└─ value-equal@1.0.1
+```
