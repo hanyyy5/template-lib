@@ -13,7 +13,7 @@ class LeftNav extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            activeKey: "Overview",
+            activeKey: "Project",
             openKey: ""
         };
     }
@@ -22,7 +22,7 @@ class LeftNav extends React.Component {
     }
     componentDidMount() {
         let pathname = window.location.pathname;
-        pathname === "/" && (pathname = "/overview");
+        pathname === "/" && (pathname = "/project");
         let keyPath = [pathname];
         let index = _.findIndex(routes, route => route.link === pathname);
         let activeKey = "";

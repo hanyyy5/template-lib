@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import LeftNav from '../wrap/leftNav/index';
@@ -55,7 +55,7 @@ const Wrapper = styled.div`
 class WrapApp extends React.Component {
   constructor(props) {
     super(props);
-    document.title = '物料库';
+    document.title = '物料库';
     this.state = {
       currentPage: '我的项目',
     }
@@ -72,7 +72,7 @@ class WrapApp extends React.Component {
   
   }
   render() {
-    const { Header, Content, Sider } = Layout;
+    const { Content, Sider } = Layout;
     return (
       <Wrapper>
         <GlobalStyle />
@@ -82,14 +82,11 @@ class WrapApp extends React.Component {
                 <Layout>
                     {/* 左侧导航 */}
                     <Sider>
-                        <div className="logo">BDP Faas</div>
+                        <div className="logo">物料库</div>
                         <LeftNav updateActive={this.updateActive}/>
                     </Sider>
                     {/* 右侧内容 */}
                     <Layout>
-                        <Header className="top-header">
-                             icon
-                        </Header>
                         <Content style={{ padding: '0 50px' }}>
                             {/* 面包屑导航 */}
                             <Breadcrumb style={{ margin: '16px 0' }}>
