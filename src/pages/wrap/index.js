@@ -66,6 +66,7 @@ class WrapApp extends React.Component {
         let index = _.findIndex(routes[parentIndex].children, subRoute => subRoute.key === key)
         this.setState({current: routes[parentIndex].children[index]['text']});
     }else{
+      debugger
         let index = _.findIndex(routes, route => route.key === key);
         this.setState({current: routes[index]['text']});
     }
