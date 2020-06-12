@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Wrapper = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
     .ant-layout {
         height: 100%;
     }
@@ -47,8 +47,7 @@ const Wrapper = styled.div`
         line-height: 64px;
     }
     .main-content-outer {
-        background: #fff;
-        padding: 0;
+       
     }
 `;
 
@@ -66,7 +65,6 @@ class WrapApp extends React.Component {
         let index = _.findIndex(routes[parentIndex].children, subRoute => subRoute.key === key)
         this.setState({current: routes[parentIndex].children[index]['text']});
     }else{
-      debugger
         let index = _.findIndex(routes, route => route.key === key);
         this.setState({current: routes[index]['text']});
     }
@@ -89,11 +87,6 @@ class WrapApp extends React.Component {
                     {/* 右侧内容 */}
                     <Layout>
                         <Content style={{ padding: '0 50px' }}>
-                            {/* 面包屑导航 */}
-                            <Breadcrumb style={{ margin: '16px 0' }}>
-                                <Breadcrumb.Item>Index</Breadcrumb.Item>
-                                <Breadcrumb.Item>{this.state.current}</Breadcrumb.Item>
-                            </Breadcrumb>
                             <div className="main-content-outer">
                                 <Switch>
                                     <Route exact path="/" render={() => <Redirect to="/project" push />}/>
