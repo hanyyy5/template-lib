@@ -1,17 +1,28 @@
-.title {
-    height: 80px;
-    line-height: 80px;
-    font-size: 22px;
-    font-weight: bold;
-}
-.add-project {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    border: 1px solid #dfdfdf;
-    border-radius: 3px;
-    cursor: pointer;
+.project-home {
+    position: relative;
+    &.hide {
+        display: none;
+    }
+    .title {
+        height: 80px;
+        line-height: 80px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .add-project {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #dfdfdf;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .open-project {
+        position: absolute;
+        right: 100px;
+        top: 40px;
+    }
 }
