@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Steps, Button, message } from 'antd';
+import { Steps, Button, message, Result  } from 'antd';
 import { LeftOutlined } from '@ant-design/icons';
+
+import ProjectInfoFrom from './projectInfoFrom';
+import pageDemo from './images/stars.jpg';
 import "./index.scss";
 
 const { Step } = Steps;
@@ -47,20 +50,36 @@ class CreateStep extends React.Component {
                 ))}
               </Steps>
               <div className="step-content-all">
-                   
+                   {current === 0 && ( <div className="step-box">
+                        <img className="demo-shoot" src={pageDemo} alt=""/>
+                   </div>)}
+                  
+                   {current === 1 && <div className="step-box">
+                        <ProjectInfoFrom />
+                   </div>}
+                   {current === 2 && <div className="step-box">
+                         打印创建过程日志
+                   </div>}
+                   {current === 3 && <div className="step-box">
+                        <Result
+                            status="success"
+                            title="成功创建项目"
+                            extra={[
+                              <Button type="primary" key="backList">
+                                返回项目列表
+                              </Button>,
+                              <Button key="edit">进入编辑</Button>,
+                            ]}
+                          />
+                   </div>}
               </div>
               <div className="steps-action">
                     {current < steps.length - 1 && (
                         <Button type="primary" onClick={() => this.next()}>
-                        下一步
+                         下一步
                         </Button>
                     )}
-                    {current === steps.length - 1 && (
-                        <Button type="primary" onClick={() => message.success('Processing complete!')}>
-                        完成
-                        </Button>
-                    )}
-                    {current > 0 && (
+                    {current > 0 && current < steps.length - 1 && (
                         <Button style={{ margin: '0 8px' }} onClick={() => this.prev()}>
                         上一步
                         </Button>

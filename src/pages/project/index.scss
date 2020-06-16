@@ -1,8 +1,5 @@
 .project-home {
     position: relative;
-    &.hide {
-        display: none;
-    }
     .title {
         height: 80px;
         line-height: 80px;
@@ -25,4 +22,26 @@
         right: 100px;
         top: 40px;
     }
+}
+
+.step-wrapper {
+    padding-top: 200px;
+    .step-box {
+        width: 400px;
+        height: 420px;
+        margin: auto;
+        
+    }
+    .steps-action {
+        display: flex;
+        justify-content: center;
+    }
+    .demo-shoot {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+.hide {
+    display: none;
 }
