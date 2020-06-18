@@ -74,14 +74,14 @@ class CreateStep extends React.Component {
                    </div>}
               </div>
               <div className="steps-action">
-                    {current < steps.length - 1 && (
-                        <Button type="primary" onClick={() => this.next()}>
-                         下一步
-                        </Button>
-                    )}
                     {current > 0 && current < steps.length - 1 && (
                         <Button style={{ margin: '0 8px' }} onClick={() => this.prev()}>
                         上一步
+                        </Button>
+                    )}
+                    {current < steps.length - 1 && (
+                        <Button type="primary" onClick={() => this.next()}>
+                         下一步
                         </Button>
                     )}
               </div>

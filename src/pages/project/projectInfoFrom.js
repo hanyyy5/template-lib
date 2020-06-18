@@ -5,6 +5,7 @@ import { FolderOpenOutlined } from '@ant-design/icons';
 
 const projectInfoForm = () => {
   const [form] = Form.useForm();
+  const [ filePath, setFilePath ] = "";
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const fileInputRef = useRef();
   const onFormLayoutChange = () => {
@@ -13,6 +14,13 @@ const projectInfoForm = () => {
   
   const triggerFileInput = () => {
     fileInputRef.current.click();
+  }
+
+  const fileChooseChanged = () => {
+    // fileInputRef.current.value;  
+    debugger;
+    setFilePath(fileInputRef.current.value)
+
   }
 
   return (
@@ -27,9 +35,9 @@ const projectInfoForm = () => {
           <Input placeholder="请输入项目名称" />
         </Form.Item>
         <Form.Item label="项目路径" name="proPath"  rules={[{ required: true, message: '请选择项目路径!' }]}>
-          <Input placeholder="请选择项目路径" readOnly/>
+          <Input placeholder="请选择项目路径" readOnly value={filePath}/>
           <FolderOpenOutlined className="path-choose" onClick={triggerFileInput}/>
-          <input type="file" className="hidden-input" name="chooseFilePath" ref={fileInputRef}/>
+          <input type="file" className="hidden-input" webkitdirectory="true" name="chooseFilePath" ref={fileInputRef} onChange={fileChooseChanged}/>
         </Form.Item>
       </Form>
   );
