@@ -12,7 +12,7 @@ class Edit extends React.Component {
   render() {
     return (
         <div className="edit-page">
-             
+             这是编辑页面
         </div>
     );
   }

@@ -73,13 +73,14 @@ class WrapApp extends React.Component {
   }
   render() {
     const { Content, Sider } = Layout;
+    const pathname = window.location.pathname;
     return (
       <Wrapper>
         <GlobalStyle />
         <Router>
           <Suspense>
-          
-                <Layout>
+                { 
+                   pathname.indexOf('project')!==-1 && <Layout>
                     {/* 左侧导航 */}
                     <Sider>
                         <div className="logo">物料库</div>
@@ -101,14 +102,14 @@ class WrapApp extends React.Component {
                                             )
                                         )
                                     }
-                                    <Route path="/edit/:projectId" component={EditPage} />
                                 </Switch>
                             </div>
                         </Content>
                     </Layout>
 
                 </Layout>
-          
+                }
+                <Route path="/edit/:projectId" component={EditPage} />
           </Suspense>
         </Router>
       </Wrapper>
