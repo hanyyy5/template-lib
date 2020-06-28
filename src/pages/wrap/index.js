@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-do
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import EditPage from '../edit'
 import LeftNav from '../wrap/leftNav/index';
 import {Layout ,Breadcrumb} from 'antd'
 import  ROUTES  from "../../config/routes.config";
@@ -100,6 +101,7 @@ class WrapApp extends React.Component {
                                             )
                                         )
                                     }
+                                    <Route path="/edit/:projectId" component={EditPage} />
                                 </Switch>
                             </div>
                         </Content>

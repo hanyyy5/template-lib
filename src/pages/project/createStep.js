@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Steps, Button, message, Result  } from 'antd';
 
@@ -68,7 +69,7 @@ class CreateStep extends React.Component {
                               <Button type="primary" key="backList" onClick={(e) => this.context.toCreateProject(false)}>
                                 返回项目列表 
                               </Button>,
-                              <Button key="edit">进入编辑</Button>,
+                              <Button key="edit"><Link to='/edit' target="_blank">进入编辑</Link></Button>,
                             ]}
                           />
                    </div>}
