@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { PlusOutlined, FolderOpenOutlined } from '@ant-design/icons';
@@ -14,9 +15,13 @@ class Project extends React.Component {
     };
   }
 
-  toCreateProject = () => {
+  getChildContext = () => ({
+     toCreateProject: this.toCreateProject
+  })
+
+  toCreateProject = (isShowCreateStep) => {
     this.setState({
-      showCreatePanel: true
+      showCreatePanel: isShowCreateStep
     })
   }
 
@@ -26,7 +31,7 @@ class Project extends React.Component {
         <div className="right-panel">
              <div className="project-home" className={ `project-home ${showCreatePanel ? 'hide':''}` }>
                   <div className="title">中后台领域IDE，快速构建企业级中后台前端应用</div>
-                  <div className="add-project" onClick={this.toCreateProject}><PlusOutlined style={{ fontSize: '24px'}} /></div>
+                  <div className="add-project" onClick={(e) => this.toCreateProject(true)}><PlusOutlined style={{ fontSize: '24px'}} /></div>
                   <div className="open-project"><FolderOpenOutlined style={{ marginRight: '8px' }} />打开项目</div>
              </div>
              {showCreatePanel && <CreateStep /> }
@@ -50,5 +55,9 @@ const mapDispatchToProps = dispatch => {
     dispatch
   );
 };
+
+Project.childContextTypes = {
+  toCreateProject: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Project);

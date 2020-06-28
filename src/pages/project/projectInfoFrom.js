@@ -5,7 +5,8 @@ import { FolderOpenOutlined } from '@ant-design/icons';
 
 const projectInfoForm = () => {
   const [form] = Form.useForm();
-  const [ filePath, setFilePath ] = "";
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [ filePath, setFilePath ] = useState("");
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const fileInputRef = useRef();
   const onFormLayoutChange = () => {
@@ -16,11 +17,11 @@ const projectInfoForm = () => {
     fileInputRef.current.click();
   }
 
-  const fileChooseChanged = () => {
+  const fileChooseChanged = (e) => {
     // fileInputRef.current.value;  
-    debugger;
-    setFilePath(fileInputRef.current.value)
-
+    // setFilePath(fileInputRef.current.value)
+    var file = e.target.files[0];
+    setFilePath(file.path)
   }
 
   return (
@@ -37,7 +38,12 @@ const projectInfoForm = () => {
         <Form.Item label="项目路径" name="proPath"  rules={[{ required: true, message: '请选择项目路径!' }]}>
           <Input placeholder="请选择项目路径" readOnly value={filePath}/>
           <FolderOpenOutlined className="path-choose" onClick={triggerFileInput}/>
-          <input type="file" className="hidden-input" webkitdirectory="true" name="chooseFilePath" ref={fileInputRef} onChange={fileChooseChanged}/>
+          <input type="file" 
+                className="hidden-input" 
+                webkitdirectory="true" 
+                name="chooseFilePath" 
+                ref={fileInputRef} 
+                onChange={(e) => fileChooseChanged(e)}/>
         </Form.Item>
       </Form>
   );

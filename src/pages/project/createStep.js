@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Steps, Button, message, Result  } from 'antd';
-import { LeftOutlined } from '@ant-design/icons';
 
 import ProjectInfoFrom from './projectInfoFrom';
 import pageDemo from './images/stars.jpg';
@@ -65,8 +65,8 @@ class CreateStep extends React.Component {
                             status="success"
                             title="成功创建项目"
                             extra={[
-                              <Button type="primary" key="backList">
-                                返回项目列表
+                              <Button type="primary" key="backList" onClick={(e) => this.context.toCreateProject(false)}>
+                                返回项目列表 
                               </Button>,
                               <Button key="edit">进入编辑</Button>,
                             ]}
@@ -104,5 +104,9 @@ const mapDispatchToProps = dispatch => {
     dispatch
   );
 };
+
+CreateStep.contextTypes = {
+  toCreateProject: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateStep);
