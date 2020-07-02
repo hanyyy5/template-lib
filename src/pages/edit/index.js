@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import "./index.scss";
 
 class Edit extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Edit extends React.Component {
   }
 
   render() {
+      debugger;
     return (
         <div className="edit-page">
              这是编辑页面

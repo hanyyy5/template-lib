@@ -1,13 +1,13 @@
 import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import EditPage from '../edit'
+import EditPage from '../edit';
 import LeftNav from '../wrap/leftNav/index';
-import {Layout ,Breadcrumb} from 'antd'
+import {Layout ,Breadcrumb} from 'antd';
 import  ROUTES  from "../../config/routes.config";
 import _ from "lodash";
 
@@ -73,14 +73,11 @@ class WrapApp extends React.Component {
   }
   render() {
     const { Content, Sider } = Layout;
-    const pathname = window.location.pathname;
     return (
       <Wrapper>
         <GlobalStyle />
-        <Router>
-          <Suspense>
-                { 
-                   pathname.indexOf('project')!==-1 && <Layout>
+              <Switch>
+                <Layout>
                     {/* 左侧导航 */}
                     <Sider>
                         <div className="logo">物料库</div>
@@ -90,8 +87,7 @@ class WrapApp extends React.Component {
                     <Layout>
                         <Content style={{ padding: '0 50px' }}>
                             <div className="main-content-outer">
-                                <Switch>
-                                    <Route exact path="/" render={() => <Redirect to="/project" push />}/>
+                                    {/* <Route exact path="/" render={() => <Redirect to="/project" push />}/> */}
                                     {   
                                         routes.map((route) => 
                                             !route.children ?
@@ -102,16 +98,13 @@ class WrapApp extends React.Component {
                                             )
                                         )
                                     }
-                                </Switch>
                             </div>
                         </Content>
                     </Layout>
 
                 </Layout>
-                }
-                <Route path="/edit/:projectId" component={EditPage} />
-          </Suspense>
-        </Router>
+            </Switch>
+            
       </Wrapper>
     );
   }
