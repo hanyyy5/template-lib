@@ -1,4 +1,4 @@
-import React, { useState, useRef, createRef, } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form, Input } from 'antd';
 import { FolderOpenOutlined } from '@ant-design/icons';
 
@@ -18,10 +18,8 @@ const projectInfoForm = () => {
   }
 
   const fileChooseChanged = (e) => {
-    // fileInputRef.current.value;  
-    // setFilePath(fileInputRef.current.value)
     var file = e.target.files[0];
-    setFilePath(file.path)
+    setFilePath(file.path);
   }
 
   return (

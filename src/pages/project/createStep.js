@@ -70,7 +70,7 @@ class CreateStep extends React.Component {
                                 返回项目列表 
                               </Button>,
                               <Button key="edit"><Link to='/edit' target="_blank">进入编辑</Link></Button>,
-                            ]}
+                            ]}                                                                                    
                           />
                    </div>}
               </div>
