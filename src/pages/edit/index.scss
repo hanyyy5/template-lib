@@ -1,4 +1,44 @@
 .edit-page {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    .left-file-tree {
+        width: 300px;
+        height: 100%;
+        border-right: 1px solid #dfdfdf;
+    }
+    .right-content {
+        width: calc(100% - 200px);
+        padding: 24px;
+        height: 100%;
+    }
+   
+    .add-page {
+        .blocks-content {
+            display: flex;
+        }
+        .block-settle {
+            height: 600px;
+            width: 60%;
+            border: 1px solid #dfdfdf;
+        }
+        .block-collect {
+            width: calc(40% - 24px);
+            margin-left: 24px;
+            .block-title {
+                height: 40px;
+                line-height: 40px;
+            }
+            .anticon {
+                float: right;
+                margin-left: 12px;
+                margin-top: 12px;
+            }
+        }
+        .button-line {
+            padding-top: 32px;
+            text-align: center;
+        }
+    }
 }
