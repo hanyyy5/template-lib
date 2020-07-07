@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-do
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import EditPage from '../edit';
 import LeftNav from '../wrap/leftNav/index';
-import {Layout ,Breadcrumb} from 'antd';
+import {Layout, Modal } from 'antd';
 import  ROUTES  from "../../config/routes.config";
 import _ from "lodash";
+import "./index.scss";
 
 import { createGlobalStyle } from 'styled-components';
 
@@ -58,6 +58,7 @@ class WrapApp extends React.Component {
     document.title = '物料库';
     this.state = {
       currentPage: '我的项目',
+      showLoginBox: true,
     }
   }
   updateActive = (key, keyPath) => {
@@ -71,10 +72,38 @@ class WrapApp extends React.Component {
     }
   
   }
+
+  openLogin = () => {
+    this.setState({
+      showLoginBox: true
+    })
+  }
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      showLoginBox: false
+    })
+  }
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      showLoginBox: false
+    })
+  }
+
   render() {
     const { Content, Sider } = Layout;
+    const { showLoginBox } = this.state;
     return (
       <Wrapper>
+        <Modal
+          title="用户登录"
+          visible={showLoginBox}
+          onCancel={this.handleCancel}
+          onOk={this.handleOk}
+        >
+          登录框
+        </Modal>
         <GlobalStyle />
               <Switch>
                 <Layout>
@@ -85,6 +114,7 @@ class WrapApp extends React.Component {
                     </Sider>
                     {/* 右侧内容 */}
                     <Layout>
+                        <div className="login-line" onClick={this.openLogin}>登录</div>
                         <Content style={{ padding: '0 50px' }}>
                             <div className="main-content-outer">
                                     {/* <Route exact path="/" render={() => <Redirect to="/project" push />}/> */}
@@ -101,7 +131,7 @@ class WrapApp extends React.Component {
                             </div>
                         </Content>
                     </Layout>
-
+                  
                 </Layout>
             </Switch>
             
