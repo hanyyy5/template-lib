@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-do
 import styled from 'styled-components';
 
 import LeftNav from '../wrap/leftNav/index';
+import LoginBox from '../login';
 import {Layout, Modal } from 'antd';
 import  ROUTES  from "../../config/routes.config";
 import _ from "lodash";
@@ -55,10 +56,10 @@ const Wrapper = styled.div`
 class WrapApp extends React.Component {
   constructor(props) {
     super(props);
-    document.title = '物料库';
     this.state = {
       currentPage: '我的项目',
-      showLoginBox: true,
+      showLoginBox: false,
+      clickLogin: 0,
     }
   }
   updateActive = (key, keyPath) => {
@@ -87,22 +88,25 @@ class WrapApp extends React.Component {
   handleOk = (e) => {
     console.log(e);
     this.setState({
-      showLoginBox: false
+      clickLogin: this.state.clickLogin + 1
     })
   }
 
   render() {
     const { Content, Sider } = Layout;
-    const { showLoginBox } = this.state;
+    const { showLoginBox, clickLogin } = this.state;
     return (
       <Wrapper>
         <Modal
           title="用户登录"
           visible={showLoginBox}
+          closable={true}
+          okText="登录"
+          cancelText="取消"
           onCancel={this.handleCancel}
           onOk={this.handleOk}
         >
-          登录框
+         <LoginBox clickLogin={clickLogin}/>
         </Modal>
         <GlobalStyle />
               <Switch>
@@ -117,7 +121,7 @@ class WrapApp extends React.Component {
                         <div className="login-line" onClick={this.openLogin}>登录</div>
                         <Content style={{ padding: '0 50px' }}>
                             <div className="main-content-outer">
-                                    {/* <Route exact path="/" render={() => <Redirect to="/project" push />}/> */}
+                                    <Route exact path="/" render={() => <Redirect to="/project" push />}/>
                                     {   
                                         routes.map((route) => 
                                             !route.children ?
